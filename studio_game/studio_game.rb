@@ -41,3 +41,28 @@ rank.odd?
 # Como saber quais métodos são aplicáveis? Documentação. Nela, vemos quais os métodos e quais os argumentos possíveis.
 
 # EXERÍCIOS
+
+name = "finn"
+health = 60
+
+puts "#{name.capitalize} has a health of #{health}"
+
+puts "#{name.upcase} has a health of #{health}"
+
+puts "#{name.capitalize} has a health of #{health}".center(50,"*")
+
+puts "#{name.capitalize.ljust(50, ".")} #{health} health"
+
+name2 = "    \n finn \t  "
+
+puts name2.strip() # Também pode ser "name2.strip", sem os parênteses.
+
+health2 = 123
+
+puts health2.to_s.reverse
+
+puts health2.to_s.reverse.to_i
+
+puts health2.to_s.reverse.to_i**2
+
+puts health2.to_s.reverse.to_i.pow(2)
