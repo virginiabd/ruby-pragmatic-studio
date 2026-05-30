@@ -1,4 +1,4 @@
-# AULA 4
+# AULA 4 - OBJECTS EVERYWHERE
 
 # Variáveis e números são objetos e estão sujeitos a métodos.
 # Métodos são iniciados por pontos. Podem ser encadeáveis.
