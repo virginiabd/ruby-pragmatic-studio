@@ -1,9 +1,7 @@
-# AULA 3
-puts "Let`s play a game! \n\n\t3\n\t2\n\t1\n\n"
-puts "🦜" * 5
+def say_hello(name, health = 100)
+  "I'm #{name.capitalize} with a health of #{health}"
+end
 
-name = "Finn"
-health = 60
+puts say_hello(name: "TINKYWINKY", health: 50)
 
-puts "#{name}`s health is #{health/9.0}"
-
+puts say_hello("Jase")
