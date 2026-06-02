@@ -1,33 +1,26 @@
-class Player
+# AULA 8 - ATTR IS FOR ATTRIBUTE
 
-  def initialize(name, health = 100)
-    @name = name.capitalize
-    @health = health
+# Atributos são métodos tão comumente utilizados, como saber o nome das variáveis de instância ou mudar esses nomes, que o Ruby já os automatiza para nós.
+
+class Movie
+  attr_reader :title, :rank # Em vez de criar um método para cada variável, utiliza-se o atributo "attr_reader", que simplesmente retorna o valor da variável.
+  attr_writer :title
+  attr_accessor :title # Usamos quando queremos que um atributo seja tanto legível quanto gravável.
+  
+  def initialize(title, rank = 5)
+    @title = title.capitalize
+    @rank = rank
+  end
+
+  def thumbs_up
+    @rank += 1
+  end
+
+  def thumbs_down
+    @rank -= 1
   end
 
   def to_s
-    "I'm #{@name} with a health of #{@health}"
-  end
-
-  def drain
-    @health -= 10
-  end
-
-  def boost
-    @health += 15
+    "#{@title} has a rank of #{@rank}"
   end
 end
-
-player_1 = Player.new("finn", health = 60)
-puts player_1
-
-player_2 = Player.new("lucy", health = 90)
-puts player_2
-
-player_3 = Player.new("jase")
-puts player_3
-
-player_4 = Player.new("alex", health = 125)
-puts player_4
-puts player_4.drain
-puts player_4.boost
