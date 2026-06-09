@@ -1,11 +1,9 @@
-# AULA 8 - ATTR IS FOR ATTRIBUTE
-
-# Atributos são métodos tão comumente utilizados, como saber o nome das variáveis de instância ou mudar esses nomes, que o Ruby já os automatiza para nós.
+# AULA 11 - ARRAY PARTY
 
 class Movie
-  attr_reader :title, :rank # Em vez de criar um método para cada variável, utiliza-se o atributo "attr_reader", que simplesmente retorna o valor da variável.
+  attr_reader :title, :rank
   attr_writer :title
-  attr_accessor :title # Usamos quando queremos que um atributo seja tanto legível quanto gravável.
+  attr_accessor :title
   
   def initialize(title, rank = 5)
     @title = title.capitalize
@@ -24,3 +22,32 @@ class Movie
     "#{@title} has a rank of #{@rank}"
   end
 end
+
+movie_1 = Movie.new("goonies", 10)
+movie_2 = Movie.new("ghostbusters", 9)
+movie_3 = Movie.new("goldfinger")
+
+movies = [movie_1, movie_2, movie_3]
+
+puts "\n Before watching:"
+puts movies
+
+movies.each do |movie|
+  number_rolled = rand(1..6)
+
+  case number_rolled
+  when 1..2
+    movie.thumbs_down
+    puts "#{movie.title} got a thumbs down!"
+  when 3..4
+    movie.thumbs_up
+    puts "#{movie.title} got skipped."
+  else
+    movie.thumbs_up
+    puts "#{movie.title} got a thumbs up!"
+  end
+end
+
+puts "\n After watching:"
+puts movies
+
