@@ -26,32 +26,32 @@ class Player
 end
 
 player_1 = Player.new("finn", health = 60)
-puts player_1
-puts player_1.health
+player_2 = Player.new("lucy", health = 90)
+player_3 = Player.new("jase")
+player_4 = Player.new("alex", health = 125)
 
-number_rolled = rand(1..6)
+players = [player_1, player_2, player_3, player_4]
 
-case number_rolled
-when 1..2
-  player_1.drain
-  puts "#{player_1.name} got drained! =("
-when 3..4
-  puts "#{player_1.name} got skipped."
-else
-  player_1.boost
-  puts "#{player_1.name} got boosted! =)"
+puts "Before playing:"
+puts players
+
+players.pop
+player_5 = Player.new("cole", 75)
+players.push(player_5)
+
+players.each do |player|
+  number_rolled = rand(1..6)
+  case number_rolled
+  when 1..2
+    player.drain
+    puts "\n#{player.name} got drained! =("
+  when 3..4
+    puts "\n#{player.name} got skipped."
+  else
+    player.boost
+    puts "\n#{player.name} got boosted! =)"
+  end
 end
 
-# player_2 = Player.new("lucy", health = 90)
-# puts player_2
-# puts player_2.health
-
-# player_3 = Player.new("jase")
-# puts player_3
-# puts player_3.health
-
-# player_4 = Player.new("alex", health = 125)
-# puts player_4
-# puts player_4.drain
-# puts player_4.boost
-# puts player_4.score
+puts "\nAfter playing:"
+puts players
