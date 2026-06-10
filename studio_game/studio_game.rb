@@ -1,10 +1,10 @@
-# AULA 11 - ARRAY PARTY
+# AULA 12 - OBJECTS COLLABORATING
 
 class Movie
   attr_reader :title, :rank
   attr_writer :title
   attr_accessor :title
-  
+
   def initialize(title, rank = 5)
     @title = title.capitalize
     @rank = rank
@@ -23,31 +23,59 @@ class Movie
   end
 end
 
-movie_1 = Movie.new("goonies", 10)
-movie_2 = Movie.new("ghostbusters", 9)
-movie_3 = Movie.new("goldfinger")
+class Playlist
+  attr_reader :name, :movies
 
-movies = [movie_1, movie_2, movie_3]
+  def initialize(name)
+    @name = name
+    @movies = []
+  end
 
-puts "\n Before watching:"
-puts movies
+  def add_movie(movie)
+    @movies << movie
+  end
 
-movies.each do |movie|
-  number_rolled = rand(1..6)
+  def roll_die
+    rand(1..6)
+  end
+  
+  def play
+    puts "*" * 30
+    puts "#{@name}'s playlist:"
+    puts "\n Before watching:"
+    puts @movies
 
-  case number_rolled
-  when 1..2
-    movie.thumbs_down
-    puts "#{movie.title} got a thumbs down!"
-  when 3..4
-    movie.thumbs_up
-    puts "#{movie.title} got skipped."
-  else
-    movie.thumbs_up
-    puts "#{movie.title} got a thumbs up!"
+    @movies.each do |movie|
+      number_rolled = roll_die
+      case number_rolled
+      when 1..2
+        movie.thumbs_down
+        puts "#{movie.title} got a thumbs down!"
+      when 3..4
+        movie.thumbs_up
+        puts "#{movie.title} got skipped."
+      else
+        movie.thumbs_up
+        puts "#{movie.title} got a thumbs up!"
+      end
+    end
+    puts "\n After watching:"
+    puts @movies
   end
 end
 
-puts "\n After watching:"
-puts movies
+movie_1 = Movie.new("goonies", 10)
+movie_2 = Movie.new("ghostbusters", 9)
+movie_3 = Movie.new("goldfinger")
+movie_4 = Movie.new("gremlins", 7)
 
+playlist_1 = Playlist.new("Kermit")
+playlist_1.add_movie(movie_1)
+playlist_1.add_movie(movie_2)
+playlist_1.add_movie(movie_3)
+playlist_1.play
+
+playlist_2 = Playlist.new("Fozzie")
+playlist_2.add_movie(movie_3)
+playlist_2.add_movie(movie_4)
+playlist_2.play
