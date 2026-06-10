@@ -25,33 +25,64 @@ class Player
   end  
 end
 
+class Game
+  attr_reader :title, :players
+
+  def initialize(title)
+    @title = title
+    @players = []
+  end
+
+  def add_player(player)
+    @players << player
+  end
+
+  def roll_die
+    rand(1..6)
+  end
+  
+  def play
+    puts "\nLet's play #{@title}!"
+    puts "\nBefore playing:"
+    puts @players
+
+    @players.each do |player|
+      number_rolled = roll_die
+      case number_rolled
+      when 1..2
+        player.drain
+        puts "\n#{player.name} got drained! =("
+      when 3..4
+        puts "\n#{player.name} got skipped."
+      else
+        player.boost
+        puts "\n#{player.name} got boosted! =)"
+      end
+    end
+
+    puts "\nAfter playing:"
+    puts @players
+  end
+end
+
 player_1 = Player.new("finn", health = 60)
 player_2 = Player.new("lucy", health = 90)
 player_3 = Player.new("jase")
 player_4 = Player.new("alex", health = 125)
 
-players = [player_1, player_2, player_3, player_4]
+game = Game.new("Winner Takes All")
+game.add_player(player_1)
+game.add_player(player_2)
+game.add_player(player_3)
+game.add_player(player_4)
+game.play
 
-puts "Before playing:"
-puts players
+player_5 = Player.new("alvin")
+player_6 = Player.new("simon")
+player_7 = Player.new("theodore")
 
-players.pop
-player_5 = Player.new("cole", 75)
-players.push(player_5)
-
-players.each do |player|
-  number_rolled = rand(1..6)
-  case number_rolled
-  when 1..2
-    player.drain
-    puts "\n#{player.name} got drained! =("
-  when 3..4
-    puts "\n#{player.name} got skipped."
-  else
-    player.boost
-    puts "\n#{player.name} got boosted! =)"
-  end
-end
-
-puts "\nAfter playing:"
-puts players
+game_2 = Game.new("Chipmunks")
+game_2.add_player(player_5)
+game_2.add_player(player_6)
+game_2.add_player(player_7)
+game_2.play
