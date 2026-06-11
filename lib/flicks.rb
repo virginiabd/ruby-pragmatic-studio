@@ -1,5 +1,9 @@
 # AULA 14 - ORGANIZING FILES
 
+# NÃO POR A EXTENSÃO ".rb"
+require_relative "flicks/movie"
+require_relative "flicks/playlist"
+
 movie_1 = Movie.new("goonies", 10)
 movie_2 = Movie.new("ghostbusters", 9)
 movie_3 = Movie.new("goldfinger")
