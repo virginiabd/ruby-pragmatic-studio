@@ -1,13 +1,6 @@
+require_relative "snackbar"
+
 class Playlist
-
-  Snack = Data.define(:name, :price)
-
-  SNACKS = [
-    Snack.new("popcorn", 3),
-    Snack.new("candy", 1),
-    Snack.new("nachos", 4),
-    Snack.new("pretzels", 2)
-  ]
 
   attr_reader :name, :movies
 
@@ -25,10 +18,12 @@ class Playlist
   end
 
   def play(viewings = 3)
+
     puts "*" * 30
     puts "#{@name}'s playlist:"
+
     puts "\nThe snackbar has:"
-    SNACKS.each do |snack|
+    Snackbar::SNACKS.each do |snack|
       puts "#{snack.name} for $#{snack.price}"
     end
 
@@ -40,18 +35,22 @@ class Playlist
 
       @movies.each do |movie|
         number_rolled = roll_die
+
         case number_rolled
         when 1..2
           movie.thumbs_down
           puts "#{movie.title} got a thumbs down!"
+
         when 3..4
           movie.thumbs_up
           puts "#{movie.title} got skipped."
+
         else
           movie.thumbs_up
           puts "#{movie.title} got a thumbs up!"
         end
-        snack = SNACKS.sample
+
+        snack = Snackbar.random_snack
         puts "During #{movie.title}, #{@name} ate #{snack.name} for $#{snack.price}."
       end
     end
