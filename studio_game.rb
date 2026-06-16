@@ -11,7 +11,7 @@ game.add_player(player_1)
 game.add_player(player_2)
 game.add_player(player_3)
 game.add_player(player_4)
-game.play
+game.play(3)
 
 player_5 = Player.new("alvin")
 player_6 = Player.new("simon")
