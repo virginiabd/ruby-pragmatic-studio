@@ -13,7 +13,7 @@ playlist_1 = Playlist.new("Kermit")
 playlist_1.add_movie(movie_1)
 playlist_1.add_movie(movie_2)
 playlist_1.add_movie(movie_3)
-playlist_1.play
+playlist_1.play(2)
 
 playlist_2 = Playlist.new("Fozzie")
 playlist_2.add_movie(movie_3)
