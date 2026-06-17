@@ -1,5 +1,3 @@
-# AULA 14 - ORGANIZING FILES
-
 # NÃO POR A EXTENSÃO ".rb"
 require_relative "lib/flicks/movie"
 require_relative "lib/flicks/playlist"
@@ -18,4 +16,4 @@ playlist_1.play(2)
 playlist_2 = Playlist.new("Fozzie")
 playlist_2.add_movie(movie_3)
 playlist_2.add_movie(movie_4)
-playlist_2.play
+playlist_2.play(20)

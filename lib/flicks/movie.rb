@@ -8,7 +8,7 @@ class Movie
   end
 
   def to_s
-    "#{@title} has a rank of #{@rank}"
+    "#{@title} has a rank of #{@rank}: #{@snacks_eaten}"
   end
 
   def thumbs_up
