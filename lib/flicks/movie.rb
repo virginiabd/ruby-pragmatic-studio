@@ -5,6 +5,11 @@ class Movie
   def initialize(title, rank = 5)
     @title = title.capitalize
     @rank = rank
+    @snacks_eaten = Hash.new(0)
+  end
+
+  def add_snack(name, price)
+    @snacks_eaten[name] += price
   end
 
   def to_s

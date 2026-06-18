@@ -7,11 +7,6 @@ class Playlist
   def initialize(name)
     @name = name
     @movies = []
-    @snacks_eaten = Hash.new(0)
-  end
-
-  def add_snack(name, price)
-    @snacks_eaten[name] += price
   end
 
   def add_movie(movie)
