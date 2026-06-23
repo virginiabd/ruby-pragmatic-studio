@@ -11,11 +11,28 @@ playlist_1 = Playlist.new("Kermit")
 playlist_1.add_movie(movie_1)
 playlist_1.add_movie(movie_2)
 playlist_1.add_movie(movie_3)
-playlist_1.play(2)
-playlist_1.print_stats
 
-playlist_2 = Playlist.new("Fozzie")
-playlist_2.add_movie(movie_3)
-playlist_2.add_movie(movie_4)
-playlist_2.play(20)
-playlist_2.print_stats
+loop do
+  print "\n How many viewings? ('Quit' or 'exit' to exit). "
+
+  answer = gets.chomp.downcase
+
+  case answer
+  when /^\d+$/
+    playlist_1.play(answer.to_i)
+  when "quit", "exit"
+    playlist_1.print_stats
+    break
+  else
+    puts "Please enter a number or 'Quit/exit'. "
+  end
+end
+
+# playlist_1.play(2)
+# playlist_1.print_stats
+
+# playlist_2 = Playlist.new("Fozzie")
+# playlist_2.add_movie(movie_3)
+# playlist_2.add_movie(movie_4)
+# playlist_2.play(20)
+# playlist_2.print_stats
