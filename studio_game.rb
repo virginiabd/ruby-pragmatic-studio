@@ -12,6 +12,7 @@ game.add_player(player_2)
 game.add_player(player_3)
 game.add_player(player_4)
 game.play(3)
+game.print_stats
 
 player_5 = Player.new("alvin")
 player_6 = Player.new("simon")
@@ -22,3 +23,4 @@ game_2.add_player(player_5)
 game_2.add_player(player_6)
 game_2.add_player(player_7)
 game_2.play
+game.print_stats

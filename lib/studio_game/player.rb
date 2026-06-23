@@ -1,6 +1,6 @@
 class Player
   attr_accessor :name
-  attr_reader :health
+  attr_reader :health, :found_treasures
 
   def initialize(name, health = 100)
     @name = name.capitalize
@@ -12,8 +12,12 @@ class Player
     @found_treasures[name] += points
   end
 
+  def points
+    @found_treasures.values.sum
+  end
+
   def to_s
-    "I'm #{@name} with a health of #{@health} and a score of #{score}: #{@found_treasures}"
+    "I'm #{@name} with a health = #{@health}, points = #{points}, and a score = #{score}."
   end
 
   def drain
@@ -26,7 +30,7 @@ class Player
 
   # Virtual attribute, no need for another instance variable ("@score")
   def score
-    @health + (@name).length
+    @health + points
   end
 end
 
