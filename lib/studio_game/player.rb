@@ -32,6 +32,12 @@ class Player
   def score
     @health + points
   end
+
+  def self.from_csv(line)
+    name, health = line.split(',')
+    Player.new(name, health.to_i)
+  end
+
 end
 
 if __FILE__ == $0
