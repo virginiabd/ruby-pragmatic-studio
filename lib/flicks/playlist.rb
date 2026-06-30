@@ -15,6 +15,9 @@ class Playlist
       movie = Movie.from_csv(line)
       add_movie(movie)
     end
+  rescue Errno::ENOENT
+    puts "Whoops, #{from_file} not found!"
+    exit 1
   end
 
   def save(to_file = "movie_rankings.csv")
