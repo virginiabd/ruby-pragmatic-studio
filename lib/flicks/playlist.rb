@@ -1,4 +1,5 @@
 require_relative "snackbar"
+require_relative "movie"
 
 class Playlist
 
@@ -11,8 +12,7 @@ class Playlist
 
   def load(from_file)
     File.readlines(from_file, chomp: true).each do |line|
-      title, rank = line.split(",")
-      movie = Movie.new(title, rank.to_i)
+      movie = Movie.from_csv(line)
       add_movie(movie)
     end
   end
@@ -20,7 +20,7 @@ class Playlist
   def save(to_file = "movie_rankings.csv")
     File.open(to_file, "w") do |file|
       sorted_movies.each do |movie|
-        file.puts "#{movie.title},#{movie.rank}"
+        file.puts movie.to_csv
       end
     end
   end
@@ -30,7 +30,7 @@ class Playlist
   end
 
   def sorted_movies
-    @movies.sort_by { |movie| movie.rank}.reverse
+    @movies.sort_by {|movie| movie.rank}.reverse
   end
 
   def print_stats

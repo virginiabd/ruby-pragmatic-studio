@@ -28,6 +28,16 @@ class Movie
     @snacks_eaten.values.sum
   end
 
+  def self.from_csv(line)
+    title, rank = line.split(",")
+    Movie.new(title, rank.to_i)
+  end
+
+  def to_csv
+    "#{@title},#{@rank}"
+  end
+
+
 end
 
 if __FILE__ == $0
