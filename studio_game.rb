@@ -7,10 +7,14 @@ player_3 = Player.new("jase")
 player_4 = Player.new("alex", health = 125)
 
 game = Game.new("Winner Takes All")
-game.add_player(player_1)
-game.add_player(player_2)
-game.add_player(player_3)
-game.add_player(player_4)
+# game.add_player(player_1)
+# game.add_player(player_2)
+# game.add_player(player_3)
+# game.add_player(player_4)
+
+players_file = File.join(__dir__, "players.csv")
+
+game.load_players(ARGV.shift || players_file)
 
 loop do
   print"\n How many game rounds? ('Quit/exit' to exit). "
@@ -26,6 +30,8 @@ loop do
     puts "Please enter a number or 'quit/exit'."
   end
 end
+
+game.save_high_scores
 
 # game.play(3)
 # game.print_stats
